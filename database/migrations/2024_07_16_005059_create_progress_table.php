@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('unit_id')->nullable();
-            $table->decimal('progress', 4, 2); 
+            $table->unsignedBigInteger('unit_id');
+            $table->decimal('progress', 4, 2);
             $table->boolean('completed')->default(false);
+            $table->date('finishDate')->nullable();
             $table->timestamps();
             // Foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -15,6 +15,7 @@ class Progress extends Model
         'unit_id',
         'progress',
         'completed',
+        'finishDate',
     ];
 
     public function user()
