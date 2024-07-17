@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProgressController;
+use App\Models\User;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -30,4 +32,10 @@ Route::middleware(['auth:api'])->group(function () {
     Route::delete('progress/{id}', [ProgressController::class, 'destroy']);
     Route::post('progress/upsert', [ProgressController::class, 'upsert']);
     Route::get('/user-progress', [ProgressController::class, 'getUserProgress']);
+});
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('users', function () {
+        return User::all();
+    });
 });
