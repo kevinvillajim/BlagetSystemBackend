@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('ci');
             $table->string('phone')->nullable();
             $table->string('bio')->nullable();
+            $table->boolean('active')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

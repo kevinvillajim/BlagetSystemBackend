@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 
 
@@ -38,4 +39,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('users', function () {
         return User::all();
     });
+    Route::post('/users', [UserController::class, 'store']);
+    Route::put('/users/{id}', [UserController::class, 'update']);
+    Route::delete('/users/{id}', [UserController::class, 'destroy']);
 });
