@@ -30,7 +30,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('progress', [ProgressController::class, 'store']);
     Route::get('progress/{id}', [ProgressController::class, 'show']);
     Route::put('progress/{id}', [ProgressController::class, 'update']);
-    Route::delete('progress/{id}', [ProgressController::class, 'destroy']);
+    Route::delete('progress/{id}/{course}', [ProgressController::class, 'destroy']);
     Route::post('progress/upsert', [ProgressController::class, 'upsert']);
     Route::get('/user-progress', [ProgressController::class, 'getUserProgress']);
 });

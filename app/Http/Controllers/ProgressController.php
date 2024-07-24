@@ -93,15 +93,17 @@ class ProgressController extends Controller
         $progress->update($request->all());
         return response()->json($progress);
     }
-    public function destroy($id)
+    public function destroy($id, $course)
     {
-        $progress = Progress::find($id);
+        $progress = Progress::where('user_id', $id)->where('course_id', $course)->get();
 
-        if (!$progress) {
+        if ($progress->isEmpty()) {
             return response()->json(['message' => 'Progress not found'], 404);
         }
 
-        $progress->delete();
+        foreach ($progress as $entry) {
+            $entry->delete();
+        }
 
         return response()->json(['message' => 'Progress deleted successfully']);
     }

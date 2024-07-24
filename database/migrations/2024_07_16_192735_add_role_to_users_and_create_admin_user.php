@@ -27,6 +27,10 @@ return new class extends Migration
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        // DB::table('progress')->insert([
+        //     'user_id' => 1,
+
+        // ])
     }
 
     /**
