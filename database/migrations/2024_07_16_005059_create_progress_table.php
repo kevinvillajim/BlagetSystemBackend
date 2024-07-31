@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('progress', 4, 2);
             $table->boolean('completed')->default(false);
             $table->date('finishDate')->nullable();
+            $table->date('score')->nullable();
             $table->timestamps();
             // Foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
